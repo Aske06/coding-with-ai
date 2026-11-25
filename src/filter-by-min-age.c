@@ -37,8 +37,15 @@ void filter_stream(FILE *istream, FILE *ostream) {
         // Alternative to strtok:
         // sscanf(line, "%*[^,],%d", &age);
 
+        if (line[0] == DELIMITER[0]) {
+          // Error
+          fprintf(stderr, "Line %zu: Name missing.\n", line_no);
+          continue;
+        }
+
         if (!age_str) {
           fprintf(stderr, "Line %zu: Age missing.\n", line_no);
+          continue; // Edit to skip this line after error
         }
       }
     } else {
