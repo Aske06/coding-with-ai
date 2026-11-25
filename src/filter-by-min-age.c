@@ -39,8 +39,9 @@ void filter_stream(FILE *istream, FILE *ostream) {
 
         if (!age_str) {
           fprintf(stderr, "Line %zu: Age missing.\n", line_no);
+          continue; // Edit to break loop after error
         }
-      }
+      } 
     } else {
       // Error
       fprintf(stderr, "Line %zu: Whole line missing.\n", line_no);
